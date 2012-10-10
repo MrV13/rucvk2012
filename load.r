@@ -36,9 +36,6 @@ name <- str_replace_all(name, '\\r\\n(\\t)*', '')
 # Construct united data.frame
 candidates <- cbind(name, compass)
 
-# Convert to long-form (for ggplot graphics)
-candidatesm <- melt(candidates, id.vars='name')
-
 # Declare function to detect gender from russian-style middle name
 detectgender <- function(x) {
         str_detect(x, "ич$")
@@ -47,3 +44,11 @@ detectgender <- function(x) {
 # Trying to get compass data labels
 # compass <- htmlTreeParse("http://compass.cvk2012.org/compass/",
 #                          useInternalNodes = T)
+
+# Short labels for compass questions
+varlabs <- c("Парл.респуб", "Защит.пошлины", "Огранич.миграц.", "Госучр.из Мск", "Оппозиц.на выборы", "Беспл.мед. и обр", "ЭксСССР", "Бюдж.в рег", "Проф.армия", "Плоск.налог", "Интегр.с ЕС", "Оружие", "ЕГЭ", "Тит.нация", "Нет ЕР", "Выборн.МСУ", "Деньги Кавказу", "Пересм.приватиз", "Госкорпорац", "Накопит.пенс", "Религ.в УК", "Альтер.парлам", "Присяжн.УК", "Либерал.экон", "Компромисс с власт")
+
+names(candidates)[2:26] <- varlabs     
+
+# Convert to long-form (for ggplot graphics)
+candidatesm <- melt(candidates, id.vars='name')
