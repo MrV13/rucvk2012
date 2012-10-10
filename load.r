@@ -5,6 +5,8 @@ library(XML)
 library(stringr)
 library(plyr)
 library(reshape2)
+library(ggplot2)
+library(psych)
 
 # Covert raw html-file in R HTML-tree
 doc <- htmlTreeParse('data/compass.cvk2012.org.htm', useInternalNodes = T)
